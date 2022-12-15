@@ -14,15 +14,13 @@
         const vm = Vue.createApp({
             data(){
                 return {
-                    // text:"Hola vue"
-                    text:"<p>Hola vue</p>"
+                    attr:"src",
+                    img:"https://i.picsum.photos/id/1/5616/3744.jpg?hmac=kKHwwU8s46oNettHKwJ24qOlIAsWN9d2TtsXDoCWWsQ"
                 };
             },
-            /*template:`<div>{{ text }}</div>`*/
-            //directiva de vue.js
-            // si se coloca v-once solo le asigna la primera propieda con que cargo
-            // template:`<div v-once v-text="text"></div>`
-            template:`<div  v-html="text"></div>`
+            template:`<img v-bind:[attr]=img  /> `
+            // template:`<img v-bind:src="img" v-bind:alt="img" />`
+            // template:`<img v-bind="{'src':img, 'alt':img}">`
         }).mount("#app");
 
     </script>
