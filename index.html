@@ -8,15 +8,21 @@
 </head>
 <body>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <div id="app">{{ text }}</div>
+    <div id="app"></div>
     <script>
         //tomaruna instacia de veu y crear una nueva aplicación
         const vm = Vue.createApp({
             data(){
                 return {
-                    text:"Hola vue"
+                    // text:"Hola vue"
+                    text:"<p>Hola vue</p>"
                 };
-            }
+            },
+            /*template:`<div>{{ text }}</div>`*/
+            //directiva de vue.js
+            // si se coloca v-once solo le asigna la primera propieda con que cargo
+            // template:`<div v-once v-text="text"></div>`
+            template:`<div  v-html="text"></div>`
         }).mount("#app");
 
     </script>
