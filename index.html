@@ -8,15 +8,21 @@
 </head>
 <body>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <div id="app">{{ text }}</div>
+    <div id="app"></div>
     <script>
         //tomaruna instacia de veu y crear una nueva aplicación
         const vm = Vue.createApp({
             data(){
                 return {
-                    text:"Hola vue"
+                    counter:0
                 };
-            }
+            },
+            methods:{
+                increment(){
+                    this.counter++;
+                }
+            },
+            template:`<button v-on:click="increment">{{counter}}</button>`
         }).mount("#app");
 
     </script>
