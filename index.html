@@ -5,6 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body{
+            width: 100%;
+            height: 100vh;
+        }
+        .container{
+            display: flex;
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .close{
+            background-color: #eca1a6;
+        }
+        .open{
+            background-color: #b5e7a0;
+        }
+    </style>
 </head>
 <body>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -14,9 +34,36 @@
         const vm = Vue.createApp({
             data(){
                 return {
-                    text:"Hola vue"
+                    text:"Puerta Cerrada",
+                    open:false,
+                    // styles:{
+                    //     backgroundColor:"#eca1a6"
+                    // }
                 };
-            }
+            },
+            watch:{
+                open(value){
+                    if (value){
+                        this.text="Puerta Abierta"
+                        // this.styles.backgroundColor="#b5e7a0";
+                    }else{
+                        this.text="Puerta Cerrada";
+                        // this.styles.backgroundColor="#eca1a6";
+                    }
+                }
+            },
+            computed:{
+                label(){
+                return this.open ? "cerrar":"abrir"},
+                styles(){
+                    return this.open ? ['open']:['close'];
+                }
+            },
+            template: `<div class="container" :class="styles">
+                        <h2>{{text}}</h2>
+                        <button @click="open = !open">{{label}}</button>
+                        </div>
+            `
         }).mount("#app");
 
     </script>
